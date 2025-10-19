@@ -6,21 +6,26 @@ import (
 )
 
 func main() {
-	textType := "Hello, Yar!" // Присвоение значения в переменную
-	intType := 10             // Целое число нельзя изменить на дробное число
-	floatType := 0.5          // Дробное число нельзя изменить на целое число
+	textType := "Hello, Yar!"       // Присвоение значения в переменную. Короткая запись. Тип определяется автоматически.
+	var text2 string = "Hello, GO!" // Длинная запись, с указанием типа переменной.
+	var text3 string                // Создание переменной со значением по умолчанию: string = "", int = 0, float64 = 0, boolean = false.
+	intType := 10                   // Целое число нельзя изменить на дробное число.
+	floatType := 0.5                // Дробное число нельзя изменить на целое число.
 	boolType := true
 
-	floatTypeResult := 2 * floatType  // Результат будет целым числом, но тип будет float64
-	intResult := int(floatTypeResult) // Приведение к типу int
+	floatTypeResult := 2 * floatType  // Результат будет целым числом 1, но тип будет float64.
+	intResult := int(floatTypeResult) // Приведение к типу int.
 
-	resDevision := intType / 3 // Результат будет 3, а не 3.33333. Если делитель и делимое целые числа, то результат всегда будет целым числом (целочисленное деление)
-	// Чтобы результат деления был правильным, делимое должно быть типа float64
+	resDevision := intType / 3 // Результат будет 3, а не 3.33333. Если делитель и делимое целые числа, то результат всегда будет целым числом (целочисленное деление).
+	// Чтобы результат деления был правильным, делимое должно быть типа float64.
 
 	remainderFromDivision := intType % 3 // Остаток от деления. Здесь равен 1.
 
-	fmt.Println(textType) // Вывод с переносом
-	fmt.Println(intType)  // Вывод в одну строку
+	fmt.Println(textType) // Вывод с переносом.
+	fmt.Println(text2)
+	fmt.Println(text3)
+	fmt.Println(textType)
+	fmt.Println(intType)
 	fmt.Println(floatType)
 	fmt.Println(boolType)
 	fmt.Println(floatTypeResult)
