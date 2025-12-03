@@ -23,7 +23,7 @@ func main() {
 		fmt.Println(text2)
 	}
 
-	val := 6
+	val := 7
 
 	if val < 6 || val > 16 {
 		fmt.Println("You are miss")
@@ -35,6 +35,12 @@ func main() {
 		fmt.Println("You are cool!")
 	} else {
 		fmt.Println("Try again")
+	}
+
+	if val != 7 {
+		fmt.Println("You are lose")
+	} else {
+		fmt.Println("You are win!")
 	}
 
 	x := (5 < 7 && 2 < 3) || (4 < 3 && 6 < 7)
