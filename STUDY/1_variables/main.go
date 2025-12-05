@@ -5,8 +5,10 @@ import (
 	"reflect"
 )
 
+// Глобальная переменная
+var textType string = "Hello, Yar!"
+
 func main() {
-	textType := "Hello, Yar!"       // Присвоение значения в переменную. Короткая запись. Тип определяется автоматически.
 	var text2 string = "Hello, GO!" // Длинная запись, с указанием типа переменной.
 	var text3 string                // Создание переменной со значением по умолчанию: string = "", int = 0, float64 = 0, bool = false.
 	intType := 10                   // Целое число нельзя изменить на дробное число.
