@@ -16,7 +16,7 @@ func (u User) Greeting() {
 }
 
 // (u *User) - рессивер по указателю
-func (u *User) ChangeRaiting(rating float64) {
+func (u *User) ChangeRating(rating float64) {
 	ratingSum := u.Rating + rating
 	if ratingSum < 0.0 || ratingSum > 10.0 {
 		fmt.Println("Rating is invalide!")
@@ -26,6 +26,14 @@ func (u *User) ChangeRaiting(rating float64) {
 	u.Rating = ratingSum
 
 	fmt.Println("New Rating:", u.Rating)
+}
+
+func (u *User) ChangeAge(age int) {
+	if age <= 0 {
+		return
+	}
+
+	u.Age = age
 }
 
 func main() {
@@ -38,7 +46,8 @@ func main() {
 	}
 
 	user.Greeting()
-	user.ChangeRaiting(1.5)
+	user.ChangeRating(1.5)
+	user.ChangeAge(54)
 
 	fmt.Println("User:", user)
 	fmt.Println("Name:", user.Name)
