@@ -1,8 +1,8 @@
-package main
+package functions
 
 import "fmt"
 
-func main() {
+func Functions() {
 	num1 := 5
 	num2 := 10
 

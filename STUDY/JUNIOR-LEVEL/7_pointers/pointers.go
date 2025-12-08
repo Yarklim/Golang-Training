@@ -1,8 +1,8 @@
-package main
+package pointers
 
 import "fmt"
 
-func main() {
+func Pointers() {
 	number := 10
 
 	var emptyPtr *int // nil указатель

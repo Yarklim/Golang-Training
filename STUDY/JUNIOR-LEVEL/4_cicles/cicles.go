@@ -1,4 +1,4 @@
-package main
+package cicles
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func main() {
+func Cicles() {
 	score := 0
 
 	for i := 1; i <= 5; i++ {

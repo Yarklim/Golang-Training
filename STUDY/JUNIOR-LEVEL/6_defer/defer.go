@@ -1,8 +1,8 @@
-package main
+package defer_study
 
 import "fmt"
 
-func main() {
+func DeferStudy() {
 	fmt.Println("Start Main")
 	// defer выполнится в самом конце кода функции main
 	defer func() {

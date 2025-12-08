@@ -1,8 +1,8 @@
-package main
+package conditionals
 
 import "fmt"
 
-func main() {
+func Conditionals() {
 	number := 5
 	firstVal := number == 5
 	secondVal := number > 12
