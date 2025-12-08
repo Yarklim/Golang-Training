@@ -1,6 +1,10 @@
 package structures
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/k0kubun/pp"
+)
 
 // (u User) - рессивер по значению
 func (u User) greeting() {
@@ -41,7 +45,7 @@ func Structures() {
 	user.changeRating(1.5)
 	user.changeAge(54)
 
-	fmt.Println("User:", user)
+	pp.Println("User:", user)
 	fmt.Println("Name:", user.name)
 	fmt.Println("Rating:", user.rating)
 	fmt.Println("IsClose before:", user.isClose)
