@@ -3,9 +3,9 @@ package arrayslicemap
 import "fmt"
 
 func MapArray() {
-	// weather := make(map[string]int, 10) // можно создавать как и в slice
+	// weatherMonth := make(map[int]int, 31) // можно создавать как и в slice
 
-	weather := map[string]int{
+	weatherWeek := map[string]int{
 		"Mon": +3,
 		"Tue": +6,
 		"Wed": +9,
@@ -15,18 +15,22 @@ func MapArray() {
 		"Sun": +1,
 	}
 
-	weather["Tue"] = +5 // добавление/изменение ключа-значения
+	weatherWeek["Tue"] = +5 // добавление/изменение ключа-значения
 
-	c, ok := weather["Gok"] // проверка на валидность значения ключа
+	c, ok := weatherWeek["Gok"] // проверка на валидность значения ключа
+
+	if !ok {
+		fmt.Println("Такого дня не существует")
+	}
 
 	// Иттерация по map (порядок элементов не сохраняется)
-	for k, v := range weather {
-		weather[k] += 1
+	for k, v := range weatherWeek {
+		weatherWeek[k] += 1
 		fmt.Println(k, v) // здесь копия массива!
 	}
 
-	fmt.Println(weather["Sat"])
-	fmt.Println(weather["Tue"])
-	fmt.Println(weather["Gok"]) // если ключа нет, то выведет 0 (значение по умолчанию типа int)
-	fmt.Println(c, ok)          // выведет 0 false
+	fmt.Println(weatherWeek["Sat"])
+	fmt.Println(weatherWeek["Tue"])
+	fmt.Println(weatherWeek["Gok"]) // если ключа нет, то выведет 0 (значение по умолчанию типа int)
+	fmt.Println(c, ok)              // выведет 0 false
 }
