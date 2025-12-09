@@ -8,4 +8,5 @@ import (
 func main() {
 	junior.SayHello()
 	arrayslicemap.StaticArray()
+	arrayslicemap.SliceArray()
 }
