@@ -33,4 +33,5 @@ func MapArray() {
 	fmt.Println(weatherWeek["Tue"])
 	fmt.Println(weatherWeek["Gok"]) // если ключа нет, то выведет 0 (значение по умолчанию типа int)
 	fmt.Println(c, ok)              // выведет 0 false
+	fmt.Println(len(weatherWeek))   // длина map (7)
 }
