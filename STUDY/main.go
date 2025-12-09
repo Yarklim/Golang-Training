@@ -7,6 +7,7 @@ import (
 
 func main() {
 	junior.SayHello()
-	arrayslicemap.StaticArray()
-	arrayslicemap.SliceArray()
+	// arrayslicemap.StaticArray()
+	// arrayslicemap.SliceArray()
+	arrayslicemap.MapArray()
 }
