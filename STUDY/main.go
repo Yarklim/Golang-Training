@@ -2,10 +2,10 @@ package main
 
 import (
 	junior "study/STUDY/JUNIOR-LEVEL"
-	structures "study/STUDY/JUNIOR-LEVEL/8_struct"
+	arrayslicemap "study/STUDY/JUNIOR-LEVEL/9_array_slice_map"
 )
 
 func main() {
 	junior.SayHello()
-	structures.Structures()
+	arrayslicemap.StaticArray()
 }
