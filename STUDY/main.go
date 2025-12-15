@@ -2,6 +2,7 @@ package main
 
 import (
 	junior "study/STUDY/BASE/0_modules_packages"
+	goroutineschannels "study/STUDY/BASE/14_goroutines_channels"
 	// panic_study "study/STUDY/BASE/13_panic"
 	// errors_study "study/STUDY/BASE/12_errors"
 	// interfaces "study/STUDY/BASE/11_interfaces"
@@ -18,4 +19,5 @@ func main() {
 	// interfaces.Interfaces()
 	// errors_study.Errors()
 	// panic_study.Panic()
+	goroutineschannels.MainGoroutines()
 }
