@@ -1,8 +1,8 @@
 package main
 
 import (
-	junior "study/STUDY/BASE"
-	panic_study "study/STUDY/BASE/13_panic"
+	junior "study/STUDY/BASE/0_modules_packages"
+	// panic_study "study/STUDY/BASE/13_panic"
 	// errors_study "study/STUDY/BASE/12_errors"
 	// interfaces "study/STUDY/BASE/11_interfaces"
 	// userinput "study/STUDY/BASE/10_user_input"
@@ -17,5 +17,5 @@ func main() {
 	// userinput.UserInputs()
 	// interfaces.Interfaces()
 	// errors_study.Errors()
-	panic_study.Panic()
+	// panic_study.Panic()
 }
