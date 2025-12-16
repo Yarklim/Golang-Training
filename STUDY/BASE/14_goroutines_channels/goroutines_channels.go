@@ -31,6 +31,14 @@ func MainGoroutines() {
 	count += <-transferPoint // Запись данных из канала в переменную
 	count += <-transferPoint // Запись данных из канала в переменную
 
+	// Анонимная горутин функция
+	go func() {
+		for {
+			fmt.Println("Hello")
+			time.Sleep(100 * time.Millisecond)
+		}
+	}()
+
 	fmt.Println("Final count", count)
 	fmt.Println("Time wasted", time.Since(initTime))
 }
