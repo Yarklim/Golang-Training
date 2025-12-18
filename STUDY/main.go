@@ -19,5 +19,6 @@ func main() {
 	// interfaces.Interfaces()
 	// errors_study.Errors()
 	// panic_study.Panic()
-	goroutineschannels.MainGoroutines()
+	// goroutineschannels.MainGoroutines()
+	goroutineschannels.ClosedChannels()
 }
