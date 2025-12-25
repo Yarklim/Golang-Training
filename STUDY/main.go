@@ -2,7 +2,8 @@ package main
 
 import (
 	junior "study/STUDY/BASE/0_modules_packages"
-	goroutineschannels "study/STUDY/BASE/14_goroutines_channels"
+	context_test "study/STUDY/BASE/15_context"
+	// goroutineschannels "study/STUDY/BASE/14_goroutines_channels"
 	// panic_study "study/STUDY/BASE/13_panic"
 	// errors_study "study/STUDY/BASE/12_errors"
 	// interfaces "study/STUDY/BASE/11_interfaces"
@@ -20,5 +21,6 @@ func main() {
 	// errors_study.Errors()
 	// panic_study.Panic()
 	// goroutineschannels.MainGoroutines()
-	goroutineschannels.ClosedChannels()
+	// goroutineschannels.ClosedChannels()
+	context_test.ContextTest()
 }
