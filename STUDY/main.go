@@ -2,6 +2,7 @@ package main
 
 import (
 	junior "study/STUDY/BASE/0_modules_packages"
+	racecondition_study "study/STUDY/BASE/17_race_condition"
 	// waitgroup_study "study/STUDY/BASE/16_waitGroup"
 	// context_test "study/STUDY/BASE/15_context"
 	// goroutineschannels "study/STUDY/BASE/14_goroutines_channels"
@@ -25,4 +26,5 @@ func main() {
 	// goroutineschannels.ClosedChannels()
 	// context_test.ContextTest()
 	// waitgroup_study.WaitGroupTest()
+	racecondition_study.Race()
 }
