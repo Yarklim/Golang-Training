@@ -10,9 +10,11 @@ import (
 
 // var number atomic.Int64 // Вариант с atomic (тяжело для производительности)
 
-var slice []int
-
-var mtx sync.Mutex
+// Вариант с Mutex
+var (
+	slice []int
+	mtx   sync.Mutex
+)
 
 func increase(wg *sync.WaitGroup) {
 	defer wg.Done()
@@ -20,6 +22,8 @@ func increase(wg *sync.WaitGroup) {
 	for i := 1; i <= 1000; i++ {
 		// number++
 		// number.Add(1) // Вариант с atomic
+
+		// Вариант с Mutex
 		mtx.Lock() // блокируем до начала критической секции (где может быть гонка)
 		slice = append(slice, i)
 		mtx.Unlock() // разблокируем после выполнения критической секции

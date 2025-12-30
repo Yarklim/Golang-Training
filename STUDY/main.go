@@ -26,5 +26,6 @@ func main() {
 	// goroutineschannels.ClosedChannels()
 	// context_test.ContextTest()
 	// waitgroup_study.WaitGroupTest()
-	racecondition_study.Race()
+	// racecondition_study.Race()
+	racecondition_study.Likes()
 }
