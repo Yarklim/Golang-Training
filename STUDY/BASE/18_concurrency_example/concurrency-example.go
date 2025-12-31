@@ -32,8 +32,8 @@ func main() {
 		postmanCancel()
 	}()
 
-	coalTransferPoint := miner.MinerPool(minerContext, 100)
-	mailTransferPoint := postman.PostmanPool(postmanContext, 50)
+	coalTransferPoint := miner.MinerPool(minerContext, 6)
+	mailTransferPoint := postman.PostmanPool(postmanContext, 4)
 
 	wg := &sync.WaitGroup{}
 
