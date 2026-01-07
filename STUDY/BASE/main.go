@@ -1,16 +1,16 @@
 package main
 
 import (
-	junior "study/STUDY/BASE/0_modules_packages"
-	// racecondition_study "study/STUDY/BASE/17_race_condition"
-	// waitgroup_study "study/STUDY/BASE/16_waitGroup"
-	// context_test "study/STUDY/BASE/15_context"
-	// goroutineschannels "study/STUDY/BASE/14_goroutines_channels"
-	// panic_study "study/STUDY/BASE/13_panic"
-	// errors_study "study/STUDY/BASE/12_errors"
-	// interfaces "study/STUDY/BASE/11_interfaces"
-	// userinput "study/STUDY/BASE/10_user_input"
-	// arrayslicemap "study/STUDY/BASE/9_array_slice_map"
+	junior "study/0_modules_packages"
+	// userinput "study/10_user_input"
+	// interfaces "study/11_interfaces"
+	// errors_study "study/12_errors"
+	// panic_study "study/13_panic"
+	// goroutineschannels "study/14_goroutines_channels"
+	// context_test "study/15_context"
+	// waitgroup_study "study/16_waitGroup"
+	// racecondition_study "study/17_race_condition"
+	// arrayslicemap "study/9_array_slice_map"
 )
 
 func main() {

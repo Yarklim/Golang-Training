@@ -1,7 +1,7 @@
 package interfaces
 
 import (
-	paymentmethods "study/STUDY/BASE/11_interfaces/payment_methods"
+	paymentmethods "study/11_interfaces/payment_methods"
 
 	"github.com/k0kubun/pp"
 )
