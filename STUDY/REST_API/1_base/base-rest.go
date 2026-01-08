@@ -6,13 +6,12 @@ import (
 	"net/http"
 	"strconv"
 	"sync"
-	"sync/atomic"
 )
 
 var (
-	mtx   = sync.Mutex{}   // Создаю мьютекс для блокировки критических секций
-	money = atomic.Int64{} // Так как payHandler выполняется в отдельной горутине, чтобы не было гонки переменную оборачиваю в атомик
-	bank  = atomic.Int64{}
+	mtx   = sync.Mutex{} // Создаю мьютекс для блокировки критических секций
+	money = 1000
+	bank  = 0
 )
 
 func defaultHandler(w http.ResponseWriter, r *http.Request) {
@@ -43,12 +42,10 @@ func payHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	mtx.Lock() // Блокирую критическую секцию обработки глобальной переменной
-	if money.Load()-int64(paymentAmount) >= 0 {
-		money.Add(int64(-paymentAmount))
+	if money-paymentAmount >= 0 {
+		money -= paymentAmount
 
-		fmt.Println("Оплата прошла успешно, остаток в кошельке:", money.Load())
-	} else {
-		fmt.Println("Оплата не прошла - недостаточно средств на счету")
+		fmt.Println("Оплата прошла успешно, остаток в кошельке:", money)
 	}
 	mtx.Unlock() // Разблокирую критическую секцию
 }
@@ -69,22 +66,18 @@ func saveHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	mtx.Lock() // Блокирую критическую секцию обработки глобальной переменной
-	if money.Load() >= int64(saveAmount) {
+	if money >= saveAmount {
 		// взять деньги из кошелька и положить в банк
-		money.Add(int64(-saveAmount))
-		bank.Add(int64(saveAmount))
+		money -= saveAmount
+		bank += saveAmount
 
-		fmt.Println("Остаток средств в кошельке:", money.Load())
-		fmt.Println("Сумма на счету в банке:", bank.Load())
-	} else {
-		fmt.Println("Недостаточно средств в кошельке")
+		fmt.Println("Остаток средств в кошельке:", money)
+		fmt.Println("Сумма на счету в банке:", bank)
 	}
 	mtx.Unlock() // Разблокирую критическую секцию
 }
 
 func BaseRest() {
-	money.Add(1000)
-
 	http.HandleFunc("/", defaultHandler)
 	http.HandleFunc("/pay", payHandler)
 	http.HandleFunc("/save", saveHandler)
