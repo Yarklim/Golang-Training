@@ -27,6 +27,18 @@ func defaultHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func payHandler(w http.ResponseWriter, r *http.Request) {
+	// ======== Для общего понимания: ========
+	// =============== Хедеры ================
+	for key, value := range r.Header {
+		fmt.Println("key:", key, "-- value:", value)
+	}
+	// =============== Методы ================
+	fmt.Println("HTTP method:", r.Method)
+	if r.Method != http.MethodPost {
+		w.WriteHeader(http.StatusMethodNotAllowed) // 405 Method Not Allowed
+	}
+	// =======================================
+
 	httpReqBody, err := io.ReadAll(r.Body) // получаю тело запроса в виде []byte
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError) // Статус код
