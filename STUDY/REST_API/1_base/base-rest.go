@@ -10,6 +10,12 @@ import (
 	"time"
 )
 
+/*
+========= Query Params =========
+fooParam := r.URL.Query().Get("foo")
+booParam := r.URL.Query().Get("boo")
+*/
+
 var (
 	money = 1000
 	bank  = 0
