@@ -22,10 +22,86 @@ method:  POST
 info:    JSON in HTTP request body
 
 succeed:
-	- status code:   201 Created
-	- response body: JSON represent created task
+  - status code:   201 Created
+  - response body: JSON represent created task
 
 failed:
+  - status code:   400, 409, 500, ...
+  - response body: JSON with error + time
 */
-
 func (h *HTTPHandlers) HandleCreateTask(w http.ResponseWriter, r *http.Request) {}
+
+/*
+pattern: /tasks/{title}
+method:  GET
+info:    pattern
+
+succeed:
+  - status code:   200 OK
+  - response body: JSON represented found task
+
+failed:
+  - status code:   400, 404, 500, ...
+  - response body: JSON with error + time
+*/
+func (h *HTTPHandlers) HandleGetTask(w http.ResponseWriter, r *http.Request) {}
+
+/*
+pattern: /tasks
+method:  GET
+info:    -
+
+succeed:
+  - status code:   200 OK
+  - response body: JSON represented found tasks
+
+failed:
+  - status code:   400, 500, ...
+  - response body: JSON with error + time
+*/
+func (h *HTTPHandlers) HandleGetAllTasks(w http.ResponseWriter, r *http.Request) {}
+
+/*
+pattern: /tasks?completed=true
+method:  GET
+info:    query params
+
+succeed:
+  - status code:   200 OK
+  - response body: JSON represented found tasks
+
+failed:
+  - status code:   400, 500, ...
+  - response body: JSON with error + time
+*/
+func (h *HTTPHandlers) HandleGetAllUncompletedTasks(w http.ResponseWriter, r *http.Request) {}
+
+/*
+pattern: /tasks/{title}
+method:  PATCH
+info:    pattern + JSON in request body
+
+succeed:
+  - status code:   200 OK
+  - response body: JSON represented changed task
+
+failed:
+  - status code:   400, 409, 500, ...
+  - response body: JSON with error + time
+*/
+func (h *HTTPHandlers) HandleCompleteTask(w http.ResponseWriter, r *http.Request) {}
+
+/*
+pattern: /tasks/{title}
+method:  DELETE
+info:    pattern
+
+succeed:
+  - status code:   204 No Content
+  - response body: -
+
+failed:
+  - status code:   400, 404, 500, ...
+  - response body: JSON with error + time
+*/
+func (h *HTTPHandlers) HandleDeleteTask(w http.ResponseWriter, r *http.Request) {}
