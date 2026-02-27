@@ -1,7 +1,11 @@
 package http
 
 import (
+	"encoding/json"
+	"errors"
+	"fmt"
 	"net/http"
+	"time"
 
 	todo "rest/2_todo"
 )
@@ -29,7 +33,54 @@ failed:
   - status code:   400, 409, 500, ...
   - response body: JSON with error + time
 */
-func (h *HTTPHandlers) HandleCreateTask(w http.ResponseWriter, r *http.Request) {}
+func (h *HTTPHandlers) HandleCreateTask(w http.ResponseWriter, r *http.Request) {
+	var taskDTO TaskDTO
+	if err := json.NewDecoder(r.Body).Decode(&taskDTO); err != nil {
+		errDTO := ErrorDTO{
+			Message: err.Error(),
+			Time:    time.Now(),
+		}
+
+		http.Error(w, errDTO.ToString(), http.StatusBadRequest)
+		return
+	}
+
+	if err := taskDTO.ValidateForCreate(); err != nil {
+		errDTO := ErrorDTO{
+			Message: err.Error(),
+			Time:    time.Now(),
+		}
+
+		http.Error(w, errDTO.ToString(), http.StatusBadRequest)
+	}
+
+	todoTask := todo.NewTask(taskDTO.Title, taskDTO.Description)
+	if err := h.todoList.AddTask(todoTask); err != nil {
+		errDTO := ErrorDTO{
+			Message: err.Error(),
+			Time:    time.Now(),
+		}
+
+		if errors.Is(err, todo.ErrTaskAlreadyExists) {
+			http.Error(w, errDTO.ToString(), http.StatusConflict)
+		} else {
+			http.Error(w, errDTO.ToString(), http.StatusInternalServerError)
+		}
+
+		return
+	}
+
+	b, err := json.MarshalIndent(todoTask, "", "    ")
+	if err != nil {
+		panic(err)
+	}
+
+	w.WriteHeader(http.StatusCreated)
+	if _, err := w.Write(b); err != nil {
+		fmt.Println("Failed to write http response:", err)
+		return
+	}
+}
 
 /*
 pattern: /tasks/{title}
