@@ -6,6 +6,10 @@ import (
 	"time"
 )
 
+type CompleteTaskDTO struct {
+	Complete bool
+}
+
 type TaskDTO struct {
 	Title       string
 	Description string
@@ -13,10 +17,11 @@ type TaskDTO struct {
 
 func (t TaskDTO) ValidateForCreate() error {
 	if t.Title == "" {
-		return errors.New("Title is empty")
+		return errors.New("title is empty")
 	}
+
 	if t.Description == "" {
-		return errors.New("Description is empty")
+		return errors.New("description is empty")
 	}
 
 	return nil
