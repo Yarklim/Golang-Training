@@ -26,8 +26,10 @@ env-logs:
 env-ps:
 	$(COMPOSE) ps -a
 
-debug:
-	which docker
-	docker --version
-	which docker-compose
-	docker-compose version
+migrate-create:
+	@if [ -z "$(name)" ]; then \
+		echo "A required parameter 'name' is missing. Usage: make migrate-create name=create_users"; \
+		exit 1; \
+	fi
+	$(COMPOSE) run --rm go-practice-migrate \
+		create -ext sql -dir . -seq $(name)

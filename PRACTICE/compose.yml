@@ -12,6 +12,12 @@ services:
     networks:
       - go_practice
 
+  go-practice-migrate:
+    image: migrate/migrate:v4.19.1
+    working_dir: /migrations
+    volumes:
+      - ./migrations:/migrations
+
 volumes:
   postgres_go_practice_data:
 
