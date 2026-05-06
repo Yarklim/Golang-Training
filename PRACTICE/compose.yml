@@ -10,16 +10,18 @@ services:
       - postgres_go_practice_data:/var/lib/postgresql
     restart: always
     networks:
-      - go_practice
+      - go-practice
 
   go-practice-migrate:
     image: migrate/migrate:v4.19.1
     working_dir: /migrations
     volumes:
       - ./migrations:/migrations
+    networks:
+      - go-practice
 
 volumes:
   postgres_go_practice_data:
 
 networks:
-  go_practice:
+  go-practice:
