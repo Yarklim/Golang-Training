@@ -5,6 +5,8 @@ COMPOSE := docker-compose
 
 MIGRATE_DATABASE_URL := postgres://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@go-practice-postgres:5432/$(POSTGRES_DB)?sslmode=disable
 
+.PHONY: env-up env-stop env-down env-cleanup env-port-forward env-port-close env-logs env-ps migrate-create migrate-up migrate-down migrate-action
+
 env-up:
 	@$(COMPOSE) up -d go-practice-postgres
 
@@ -22,6 +24,13 @@ env-cleanup:
 		echo "Cleanup cancelled"; \
 	fi
 
+env-port-forward:
+	@$(COMPOSE) up -d port-forwarder
+
+env-port-close:
+	@$(COMPOSE) stop port-forwarder
+	@$(COMPOSE) rm -f port-forwarder
+
 env-logs:
 	@$(COMPOSE) logs -f go-practice-postgres
 
@@ -37,10 +46,10 @@ migrate-create:
 		create -ext sql -dir . -seq $(name)
 
 migrate-up:
-	@make migrate-action action=up
+	@$(MAKE) migrate-action action=up
 
 migrate-down:
-	@make migrate-action action=down
+	@$(MAKE) migrate-action action=down
 
 migrate-action:
 	@if [ -z "$(action)" ]; then \
@@ -50,4 +59,4 @@ migrate-action:
 	$(COMPOSE) run --rm go-practice-migrate \
 		-path . \
 		-database "$(MIGRATE_DATABASE_URL)" \
-		"${action}"
+		$(action)
